@@ -11,6 +11,7 @@ app.use(cors())
 app.use(morgan(':method :url :status :response-time ms :body'))
 
 app.use(express.json())
+app.use(express.static('build'))
 
 let persons = [
   {
@@ -34,10 +35,6 @@ let persons = [
     id: 4,
   },
 ]
-
-app.get('/', (request, response) => {
-  response.redirect('/info')
-})
 
 app.get('/info', (request, response) => {
   response.send(
